@@ -31,6 +31,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.layout.fillMaxWidth
 
 class MainActivity : ComponentActivity() {
 
@@ -123,8 +127,8 @@ fun MainMenu(
             painter = painterResource(R.drawable.game2),
             contentDescription = "Game",
             modifier = Modifier
-                .width(400.dp)
-                .padding(top = 50.dp)
+                .fillMaxWidth()
+                .padding(top = 5.dp)
                 .scale(1.15f)
         )
 
@@ -133,7 +137,7 @@ fun MainMenu(
             contentDescription = "Game",
             modifier = Modifier
                 .width(400.dp)
-                .padding(top = 100.dp)
+                .padding(top = 50.dp)
                 .scale(1.5f)
         )
 
@@ -144,7 +148,7 @@ fun MainMenu(
                 contentColor = Color.White
             ),
             modifier = Modifier
-                .padding(top = 110.dp)
+                .padding(top = 60.dp)
                 .height(60.dp)
                 .width(400.dp)
         ) {
@@ -166,7 +170,7 @@ fun MainMenu(
                 .width(400.dp)
         ) {
             Text(
-                text = "SETTINGS",
+                text = "HOW TO PLAY",
                 fontSize = 20.sp
             )
         }
@@ -177,33 +181,50 @@ fun MainMenu(
 fun SettingsScreen(
     onBack: () -> Unit
 ) {
+    val scrollState = rememberScrollState()
+
+    BackHandler {
+        onBack()
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
             .padding(24.dp)
+            .verticalScroll(scrollState)
     ) {
         Image(
             painter = painterResource(R.drawable.game2),
             contentDescription = "Game",
             modifier = Modifier
-                .width(400.dp)
-                .padding(top = 50.dp)
+                .fillMaxWidth()
+                .padding(top = 5.dp)
                 .scale(1.15f)
         )
 
         Text(
+            text = "AMINA'S HITSTER",
+            color = Color.White,
+            fontSize = 26.sp,
+            textAlign = TextAlign.Left,
+            modifier = Modifier
+                .padding(top = 20.dp)
+        )
+
+
+        Text(
             text = "Join the ultimate party powered by Amina's favorite songs. Take turns placing songs in the correct order on your timeline and prove who knows the music best.",
             color = Color.White,
-            fontSize = 22.sp,
+            fontSize = 20.sp,
             textAlign = TextAlign.Justify,
-            modifier = Modifier.padding(top = 40.dp)
+            modifier = Modifier.padding(top = 20.dp)
         )
 
         Text(
             text = "Turn any night into a party, no DJ needed. Just pick your AMINA'S HITSTER edition and press play. A game for everyone, whether you’re a music expert or just love a good tune. Scan the QR code, place the song in the timeline, and have the time of your life.",
             color = Color.White,
-            fontSize = 22.sp,
+            fontSize = 20.sp,
             textAlign = TextAlign.Justify,
             modifier = Modifier.padding(top = 10.dp)
         )
@@ -211,26 +232,17 @@ fun SettingsScreen(
         Text(
             text = "The first player to collect 10 cards earns the title of AMINA'S HITSTER.",
             color = Color.White,
-            fontSize = 22.sp,
+            fontSize = 20.sp,
             textAlign = TextAlign.Justify,
             modifier = Modifier.padding(top = 10.dp)
         )
 
-        Button(
-            onClick = onBack,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFFF50C6F),
-                contentColor = Color.White
-            ),
-            modifier = Modifier
-                .padding(top = 45.dp)
-                .height(60.dp)
-                .width(400.dp)
-        ) {
-            Text(
-                text = "BACK",
-                fontSize = 20.sp
-            )
-        }
+        Text(
+            text = "THERE IS NO BETTER PLAN THAN A HITSTER PLAN!",
+            color = Color.White,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Justify,
+            modifier = Modifier.padding(top = 10.dp)
+        )
     }
 }
