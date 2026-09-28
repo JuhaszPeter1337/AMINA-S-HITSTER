@@ -268,7 +268,8 @@ fun MainMenu(
             contentDescription = "Game",
             modifier = Modifier
                 .width(400.dp)
-                .scale(0.8f)
+                .padding(top = 50.dp)
+                .scale(1.5f)
         )
 
         Button(
@@ -278,6 +279,7 @@ fun MainMenu(
                 contentColor = Color.White
             ),
             modifier = Modifier
+                .padding(top = 60.dp)
                 .height(60.dp)
                 .width(400.dp)
         ) {
@@ -404,10 +406,11 @@ fun PlayerScreen(
 
         Image(
             painter = painterResource(R.drawable.speaker),
-            contentDescription = "Speaker",
+            contentDescription = "Game",
             modifier = Modifier
                 .width(400.dp)
-                .scale(0.8f)
+                .padding(top = 50.dp)
+                .scale(1.5f)
         )
 
         // Play / Pause Button with dynamic icon
@@ -418,6 +421,7 @@ fun PlayerScreen(
                 contentColor = Color.White
             ),
             modifier = Modifier
+                .padding(top = 60.dp)
                 .height(60.dp)
                 .width(400.dp)
         ) {
