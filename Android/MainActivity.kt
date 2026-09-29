@@ -747,7 +747,7 @@ fun MainMenu(
                         400.dp
                     )
                     .padding(
-                        top = 18.dp
+                        top = 25.dp
                     )
                     .scale(
                         1.3f
@@ -772,7 +772,7 @@ fun MainMenu(
             modifier =
                 Modifier
                     .padding(
-                        top = 23.dp
+                        top = 30.dp
                     )
                     .height(
                         60.dp
@@ -832,7 +832,7 @@ fun MainMenu(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -874,7 +874,7 @@ fun MainMenu(
             }
         }
 
-        // DESCRIPTION / HOW TO PLAY
+        // DESCRIPTION
         Button(
             onClick =
                 onSettings,
@@ -891,7 +891,7 @@ fun MainMenu(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -946,7 +946,7 @@ fun MainMenu(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 7.dp)
+                    .padding(top = 10.dp)
         )
     }
 }
@@ -1011,7 +1011,7 @@ fun GameModeScreen(
                         400.dp
                     )
                     .padding(
-                        top = 18.dp
+                        top = 25.dp
                     )
                     .scale(
                         1.3f
@@ -1036,7 +1036,7 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 23.dp
+                        top = 30.dp
                     )
                     .height(
                         60.dp
@@ -1096,7 +1096,7 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -1156,7 +1156,7 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -1211,7 +1211,7 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 7.dp)
+                    .padding(top = 10.dp)
         )
     }
 }
@@ -1630,7 +1630,7 @@ fun PlayerScreen(
                         400.dp
                     )
                     .padding(
-                        top = 18.dp
+                        top = 25.dp
                     )
                     .scale(
                         1.3f
@@ -1655,7 +1655,7 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 23.dp
+                        top = 30.dp
                     )
                     .height(
                         60.dp
@@ -1718,7 +1718,7 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -1778,7 +1778,7 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 20.dp
+                        top = 12.dp
                     )
                     .height(
                         60.dp
@@ -1833,7 +1833,7 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 7.dp)
+                    .padding(top = 10.dp)
         )
     }
 }
