@@ -728,9 +728,6 @@ fun MainMenu(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 5.dp
-                    )
                     .scale(
                         1.15f
                     )
@@ -750,7 +747,7 @@ fun MainMenu(
                         400.dp
                     )
                     .padding(
-                        top = 30.dp
+                        top = 18.dp
                     )
                     .scale(
                         1.3f
@@ -775,7 +772,7 @@ fun MainMenu(
             modifier =
                 Modifier
                     .padding(
-                        top = 40.dp
+                        top = 23.dp
                     )
                     .height(
                         60.dp
@@ -877,8 +874,7 @@ fun MainMenu(
             }
         }
 
-
-        // HOW TO PLAY
+        // DESCRIPTION / HOW TO PLAY
         Button(
             onClick =
                 onSettings,
@@ -914,7 +910,7 @@ fun MainMenu(
                     imageVector =
                         Icons.Default.HelpOutline,
                     contentDescription =
-                        "How To Play",
+                        "DESCRIPTION",
                     tint =
                         Color.White
                 )
@@ -936,6 +932,22 @@ fun MainMenu(
                 )
             }
         }
+
+        // COPYRIGHT NOTICE
+        Text(
+            text =
+                "Copyright © XAERON",
+            color =
+                Color.Gray,
+            fontSize =
+                14.sp,
+            textAlign =
+                TextAlign.Center,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 7.dp)
+        )
     }
 }
 
@@ -980,9 +992,6 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 5.dp
-                    )
                     .scale(
                         1.15f
                     )
@@ -995,14 +1004,14 @@ fun GameModeScreen(
                     R.drawable.speaker
                 ),
             contentDescription =
-                "Game Mode",
+                "Game",
             modifier =
                 Modifier
                     .width(
                         400.dp
                     )
                     .padding(
-                        top = 30.dp
+                        top = 18.dp
                     )
                     .scale(
                         1.3f
@@ -1027,7 +1036,7 @@ fun GameModeScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 40.dp
+                        top = 23.dp
                     )
                     .height(
                         60.dp
@@ -1188,6 +1197,22 @@ fun GameModeScreen(
                 )
             }
         }
+
+        // COPYRIGHT NOTICE
+        Text(
+            text =
+                "Copyright © XAERON",
+            color =
+                Color.Gray,
+            fontSize =
+                14.sp,
+            textAlign =
+                TextAlign.Center,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 7.dp)
+        )
     }
 }
 
@@ -1236,9 +1261,6 @@ fun SettingsScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 5.dp
-                    )
                     .scale(
                         1.15f
                     )
@@ -1338,6 +1360,32 @@ fun SettingsScreen(
                     top = 10.dp
                 )
         )
+
+        Spacer(
+            modifier =
+                Modifier.weight(
+                    1f
+                )
+        )
+
+
+        // COPYRIGHT NOTICE
+        Text(
+            text =
+                "Copyright © XAERON",
+            color =
+                Color.Gray,
+            fontSize =
+                14.sp,
+            textAlign =
+                TextAlign.Center,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        top = 7.dp,
+                    )
+        )
     }
 }
 
@@ -1385,9 +1433,6 @@ fun GameModesInfoScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 5.dp
-                    )
                     .scale(
                         1.15f
                     )
@@ -1507,6 +1552,32 @@ fun GameModesInfoScreen(
                     top = 10.dp
                 )
         )
+
+        Spacer(
+            modifier =
+                Modifier.weight(
+                    1f
+                )
+        )
+
+
+        // COPYRIGHT NOTICE
+        Text(
+            text =
+                "Copyright © XAERON",
+            color =
+                Color.Gray,
+            fontSize =
+                14.sp,
+            textAlign =
+                TextAlign.Center,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        top = 7.dp
+                    )
+        )
     }
 }
 
@@ -1557,9 +1628,6 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(
-                        top = 5.dp
-                    )
                     .scale(
                         1.15f
                     )
@@ -1579,7 +1647,7 @@ fun PlayerScreen(
                         400.dp
                     )
                     .padding(
-                        top = 30.dp
+                        top = 18.dp
                     )
                     .scale(
                         1.3f
@@ -1604,7 +1672,7 @@ fun PlayerScreen(
             modifier =
                 Modifier
                     .padding(
-                        top = 40.dp
+                        top = 23.dp
                     )
                     .height(
                         60.dp
@@ -1768,5 +1836,21 @@ fun PlayerScreen(
                 )
             }
         }
+
+        // COPYRIGHT NOTICE
+        Text(
+            text =
+                "Copyright © XAERON",
+            color =
+                Color.Gray,
+            fontSize =
+                14.sp,
+            textAlign =
+                TextAlign.Center,
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 7.dp)
+        )
     }
 }
