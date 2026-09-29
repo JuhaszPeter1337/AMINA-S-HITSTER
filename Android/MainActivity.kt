@@ -58,10 +58,12 @@ import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material.icons.filled.VideogameAsset
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Psychology
+import androidx.compose.material.icons.filled.Star
 
 enum class GameMode {
     CLASSIC,
-    SNEAK_PEEK
+    SNEAK_PEEK,
+    AMINAS_SPECIAL
 }
 
 
@@ -128,6 +130,10 @@ class MainActivity : ComponentActivity() {
                                 gameMode = GameMode.SNEAK_PEEK
                                 startQrScanner()
                             },
+                            onAminasSpecial = {
+                                gameMode = GameMode.AMINAS_SPECIAL
+                                startQrScanner()
+                            },
                             onBack = {
                                 currentScreen = "menu"
                             }
@@ -139,21 +145,21 @@ class MainActivity : ComponentActivity() {
                         // -------------------------------------------------
 
                         "player" -> PlayerScreen(
+                            gameMode = gameMode,
                             isPlaying = isPlaying,
                             onTogglePlayPause = {
-                                togglePlayPause()
+                                when (gameMode) {
+                                    GameMode.CLASSIC -> togglePlayPause()
+                                    GameMode.SNEAK_PEEK -> replaySnippet(3000L)
+                                    GameMode.AMINAS_SPECIAL -> replaySnippet(1000L)
+                                }
                             },
                             onScanNext = {
-
-                                // Stop current song before scanning
                                 pausePlayback()
-
                                 startQrScanner()
                             },
                             onBackToMenu = {
-
                                 pausePlayback()
-
                                 currentScreen = "menu"
                             }
                         )
@@ -451,12 +457,9 @@ class MainActivity : ComponentActivity() {
 
     private fun playTrack(spotifyUri: String) {
         when (gameMode) {
-            GameMode.CLASSIC -> {
-                playOrderMode(spotifyUri)
-            }
-            GameMode.SNEAK_PEEK -> {
-                playFindOutMode(spotifyUri)
-            }
+            GameMode.CLASSIC -> playOrderMode(spotifyUri)
+            GameMode.SNEAK_PEEK -> playSnippetMode(spotifyUri, 3000L)
+            GameMode.AMINAS_SPECIAL -> playSnippetMode(spotifyUri, 1000L)
         }
     }
 
@@ -522,49 +525,24 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
     // ============================================================
-    // FIND OUT MODE
-    //
-    // 1. Start Spotify track
-    // 2. Get duration
-    // 3. Generate random position
-    // 4. Seek to random position
-    // 5. Play
-    // 6. Pause after 3 seconds
-    // ============================================================
-
-    // ============================================================
-    // FIND OUT MODE (FIXED)
-    //
-    // 1. Start Spotify track
-    // 2. Subscribe to PlayerState until track is active/playing
-    // 3. Extract duration & calculate random seek position
-    // 4. Seek to random position
-    // 5. Schedule pause after 3 seconds
-    // ============================================================
-
-    private fun playFindOutMode(
-        spotifyUri: String
+// INITIAL SNIPPET PLAYBACK (ON QR SCAN)
+// ============================================================
+    private fun playSnippetMode(
+        spotifyUri: String,
+        sampleDurationMs: Long
     ) {
         val remote = spotifyAppRemote ?: run {
-            Toast.makeText(
-                this,
-                "Spotify is not connected",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this, "Spotify is not connected", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Cancel any pending FIND OUT timer
-        findOutPauseRunnable?.let {
-            handler.removeCallbacks(it)
-        }
+        // Clear previous timer
+        findOutPauseRunnable?.let { handler.removeCallbacks(it) }
         findOutPauseRunnable = null
 
         var hasSeeked = false
 
-        // Subscribe to state updates to ensure song is loaded before seeking
         val stateSubscription = remote.playerApi.subscribeToPlayerState()
 
         stateSubscription.setEventCallback { playerState ->
@@ -574,34 +552,31 @@ class MainActivity : ComponentActivity() {
                 hasSeeked = true
 
                 val duration = track.duration
-                Log.d("Spotify", "Song duration: $duration ms")
 
-                // Choose random position leaving at least 3 seconds before the end
-                val randomPosition = if (duration <= 3000) {
+                // Pick random start position and SAVE it for replay
+                currentSnippetPositionMs = if (duration <= sampleDurationMs) {
                     0L
                 } else {
-                    val maxStartPosition = duration - 3000
+                    val maxStartPosition = duration - sampleDurationMs
                     Random.nextLong(0, maxStartPosition + 1)
                 }
 
-                Log.d("Spotify", "FIND OUT random position: $randomPosition ms")
+                Log.d("Spotify", "Saved snippet position: $currentSnippetPositionMs ms")
 
-                // Seek to random position
-                remote.playerApi.seekTo(randomPosition).setResultCallback {
+                // Seek to position
+                remote.playerApi.seekTo(currentSnippetPositionMs).setResultCallback {
                     isPlaying = true
                     currentScreen = "player"
 
-                    // Schedule pause 3 seconds after seeking completes
+                    // Schedule pause after duration
                     findOutPauseRunnable = Runnable {
                         remote.playerApi.pause().setResultCallback {
                             isPlaying = false
-                            Log.d("Spotify", "FIND OUT 3-second sample finished")
+                            Log.d("Spotify", "Snippet playback auto-paused")
                         }
                     }
 
-                    handler.postDelayed(findOutPauseRunnable!!, 3000)
-
-                    // Unsubscribe from state updates once initial sample trigger is scheduled
+                    handler.postDelayed(findOutPauseRunnable!!, sampleDurationMs)
                     stateSubscription.cancel()
                 }.setErrorCallback { throwable ->
                     Log.e("Spotify", "Seek error", throwable)
@@ -610,14 +585,9 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        // Start playback to trigger the player state event
+        // Start playback to trigger event callback
         remote.playerApi.play(spotifyUri).setErrorCallback { throwable ->
             Log.e("Spotify", "Playback error", throwable)
-            Toast.makeText(
-                this,
-                "Failed to play: ${throwable.localizedMessage}",
-                Toast.LENGTH_LONG
-            ).show()
             stateSubscription.cancel()
         }
     }
@@ -655,6 +625,42 @@ class MainActivity : ComponentActivity() {
                     isPlaying =
                         true
                 }
+        }
+    }
+
+    // Track the active snippet start position
+    private var currentSnippetPositionMs: Long = 0L
+
+    // ============================================================
+    // REPLAY SAVED SNIPPET (ON BUTTON PRESS)
+    // ============================================================
+    private fun replaySnippet(sampleDurationMs: Long) {
+        val remote = spotifyAppRemote ?: return
+
+        // Clear any active timer before starting a new snippet
+        findOutPauseRunnable?.let { handler.removeCallbacks(it) }
+
+        // 1. Seek to saved timestamp first
+        remote.playerApi.seekTo(currentSnippetPositionMs).setResultCallback {
+            // 2. Resume playback
+            remote.playerApi.resume().setResultCallback {
+                isPlaying = true
+
+                // 3. Schedule auto-pause
+                findOutPauseRunnable = Runnable {
+                    remote.playerApi.pause().setResultCallback {
+                        isPlaying = false
+                    }
+                }
+
+                handler.postDelayed(findOutPauseRunnable!!, sampleDurationMs)
+            }.setErrorCallback { throwable ->
+                Log.e("Spotify", "Resume error during replay", throwable)
+                isPlaying = false
+            }
+        }.setErrorCallback { throwable ->
+            Log.e("Spotify", "Seek error during replay", throwable)
+            isPlaying = false
         }
     }
 
@@ -942,6 +948,7 @@ fun MainMenu(
 fun GameModeScreen(
     onClassic: () -> Unit,
     onSneakPeek: () -> Unit,
+    onAminasSpecial: () -> Unit,
     onBack: () -> Unit
 ) {
 
@@ -1115,7 +1122,67 @@ fun GameModeScreen(
 
                 Text(
                     text =
-                        "SNEAK PEEK MODE",
+                        "SNEAK PEEK",
+                    fontSize =
+                        20.sp
+                )
+            }
+        }
+
+
+        // AMINA'S SPECIAL MODE
+        Button(
+            onClick =
+                onAminasSpecial,
+            colors =
+                ButtonDefaults
+                    .buttonColors(
+                        containerColor =
+                            Color(
+                                0xFFF50C6F
+                            ),
+                        contentColor =
+                            Color.White
+                    ),
+            modifier =
+                Modifier
+                    .padding(
+                        top = 20.dp
+                    )
+                    .height(
+                        60.dp
+                    )
+                    .width(
+                        400.dp
+                    )
+        ) {
+
+            Row(
+                verticalAlignment =
+                    Alignment.CenterVertically
+            ) {
+
+                Icon(
+                    imageVector =
+                        Icons.Default.Star,
+                    contentDescription =
+                        "Amina's Special Mode",
+                    tint =
+                        Color.White
+                )
+
+
+                Spacer(
+                    modifier =
+                        Modifier.width(
+                            8.dp
+                        )
+                )
+
+
+                Text(
+                    text =
+                        "AMINA'S SPECIAL",
                     fontSize =
                         20.sp
                 )
@@ -1407,9 +1474,41 @@ fun GameModesInfoScreen(
                     top = 10.dp
                 )
         )
+
+
+        // AMINA'S SPECIAL MODE SECTION
+        Text(
+            text =
+                "3. AMINA'S SPECIAL MODE",
+            color =
+                Color(0xFFF50C6F),
+            fontSize =
+                22.sp,
+            textAlign =
+                TextAlign.Left,
+            modifier =
+                Modifier.padding(
+                    top = 20.dp
+                )
+        )
+
+
+        Text(
+            text =
+                "Amina's Special mode is the ultimate master level challenge with Amina's favorite songs! Just like Sneak Peek mode, scanning a card seeks to a completely random spot in the track except you only get a lightning fast 1 second snippet before it pauses. Don't be a brat and try it!",
+            color =
+                Color.White,
+            fontSize =
+                20.sp,
+            textAlign =
+                TextAlign.Justify,
+            modifier =
+                Modifier.padding(
+                    top = 10.dp
+                )
+        )
     }
 }
-
 
 // ================================================================
 // PLAYER SCREEN
@@ -1417,14 +1516,21 @@ fun GameModesInfoScreen(
 
 @Composable
 fun PlayerScreen(
+    gameMode: GameMode,
     isPlaying: Boolean,
     onTogglePlayPause: () -> Unit,
     onScanNext: () -> Unit,
     onBackToMenu: () -> Unit
 ) {
 
-    BackHandler {
+    // Dynamic button label based on mode and playback state
+    val playButtonText = when {
+        gameMode == GameMode.CLASSIC && isPlaying -> "PAUSE MUSIC"
+        gameMode == GameMode.CLASSIC && !isPlaying -> "RESUME MUSIC"
+        else -> "REPLAY SNIPPET" // Sneak Peek & Amina's Special
+    }
 
+    BackHandler {
         onBackToMenu()
     }
 
@@ -1481,7 +1587,7 @@ fun PlayerScreen(
         )
 
 
-        // PLAY / PAUSE
+        // PLAY / PAUSE / REPLAY SNIPPET
         Button(
             onClick =
                 onTogglePlayPause,
@@ -1515,15 +1621,12 @@ fun PlayerScreen(
 
                 Icon(
                     imageVector =
-                        if (isPlaying)
+                        if (gameMode == GameMode.CLASSIC && isPlaying)
                             Icons.Default.Pause
                         else
                             Icons.Default.PlayArrow,
                     contentDescription =
-                        if (isPlaying)
-                            "Pause"
-                        else
-                            "Play",
+                        playButtonText,
                     tint =
                         Color.White
                 )
@@ -1539,10 +1642,7 @@ fun PlayerScreen(
 
                 Text(
                     text =
-                        if (isPlaying)
-                            "PAUSE MUSIC"
-                        else
-                            "RESUME MUSIC",
+                        playButtonText,
                     fontSize =
                         20.sp
                 )
