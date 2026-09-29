@@ -1329,23 +1329,6 @@ fun SettingsScreen(
                 )
         )
 
-
-        Text(
-            text =
-                "The first player to collect 10 cards earns the title of AMINA'S HITSTER.",
-            color =
-                Color.White,
-            fontSize =
-                20.sp,
-            textAlign =
-                TextAlign.Justify,
-            modifier =
-                Modifier.padding(
-                    top = 10.dp
-                )
-        )
-
-
         Text(
             text =
                 "THERE IS NO BETTER PLAN THAN A HITSTER PLAN!",
@@ -1474,7 +1457,7 @@ fun GameModesInfoScreen(
 
         Text(
             text =
-                "In Classic mode, scan a card's QR code to play the track normally from the beginning. Listen to the music, guess when it was released, and place it in the correct chronological position on your timeline.",
+                "In Classic mode, scan a card's QR code to play the track normally from the beginning. Listen to the music, guess when it was released, and place it in the correct chronological position on your timeline. The first player to collect 10 cards earns the title of AMINA'S HITSTER.",
             color =
                 Color.White,
             fontSize =
