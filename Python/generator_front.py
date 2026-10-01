@@ -1,7 +1,7 @@
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
 
-url = "https://open.spotify.com/track/3QuRLv8zkIYH31O5VgEpmo?autoplay_ok=1"
+url = "https://open.spotify.com/track/0e4u0sFRGxHL4U2iFBrUvZ?autoplay_ok=1"
 
 # --------------------------------------------------
 # PRINT SETTINGS
@@ -23,8 +23,8 @@ pink = "#f50c6f"
 # PATHS
 # --------------------------------------------------
 
-hitster_image_path = "game-pic/game2.png"
-spotify_logo_path = "logo/spotify_logo_without_background.png"
+hitster_image_path = "../game-pic/game2.png"
+spotify_logo_path = "../logo/spotify_logo_without_background.png"
 
 
 # --------------------------------------------------
@@ -221,7 +221,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "qr-codes/Harry_Styles-Carlas_Song.png",
+    "../qr-codes/Olivia_Rodrigo-cigarette_smoke.png",
     dpi=(DPI, DPI)
 )
 

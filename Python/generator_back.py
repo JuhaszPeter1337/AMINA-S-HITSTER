@@ -24,8 +24,8 @@ pink = "#f50c6f"
 # PATHS
 # --------------------------------------------------
 
-hitster_image_path = "game-pic/game2.png"
-second_image_path = "albums/carlas_song.png"
+hitster_image_path = "../game-pic/game2.png"
+second_image_path = "../albums/Olivia_Rodrigo-cigarette_smoke.png"
 
 
 # ==================================================
@@ -148,7 +148,7 @@ font = ImageFont.truetype(
 )
 
 release_date = "2026"
-song = f"Artist: Harry Styles\nSong: Carla's Song\nRelease date: {release_date}"
+song = f"Artist: Olivia Rodrigo\nSong: cigarette smoke\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "foreground-pics/Harry_Styles-Carlas_Song.png",
+    "../background-pics/Olivia_Rodrigo-cigarette_smoke.png",
     dpi=(DPI, DPI)
 )
 
