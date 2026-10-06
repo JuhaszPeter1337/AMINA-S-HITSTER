@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Louis_Tomlinson-Silver_Tongues.png"
+second_image_path = "../albums/Louis_Tomlinson-Two_of_Us.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2022"
-song = f"Artist: Louis Tomlinson\nSong: Silver Tongues\nRelease date: {release_date}"
+release_date = "2020"
+song = f"Artist: Louis Tomlinson\nSong: Two of Us\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../63x88/back/Louis_Tomlinson-Silver_Tongues.png",
+    "../63x88/back/Louis_Tomlinson-Two_of_Us.png",
     dpi=(DPI, DPI)
 )
 
