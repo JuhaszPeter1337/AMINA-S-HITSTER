@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Louis_Tomlinson-Two_of_Us.png"
+second_image_path = "../albums/One_Direction-Act_My_Age.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2020"
-song = f"Artist: Louis Tomlinson\nSong: Two of Us\nRelease date: {release_date}"
+release_date = "2014"
+song = f"Artist: One Direction\nSong: Act My Age\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../63x88/back/Louis_Tomlinson-Two_of_Us.png",
+    "../63x88/back/One_Direction-Act_My_Age.png",
     dpi=(DPI, DPI)
 )
 
