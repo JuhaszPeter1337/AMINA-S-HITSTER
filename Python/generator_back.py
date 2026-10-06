@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/One_Direction-Truly_Madly_Deeply.png"
+second_image_path = "../albums/The_Weeknd-Blinding_Lights.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2012"
-song = f"Artist: One Direction\nSong: Truly Madly Deeply\nRelease date: {release_date}"
+release_date = "2020"
+song = f"Artist: The Weeknd\nSong: Blinding Lights\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../cards/back/One_Direction-Truly_Madly_Deeply.png",
+    "../years/2020/back/The_Weeknd-Blinding_Lights.png",
     dpi=(DPI, DPI)
 )
 
