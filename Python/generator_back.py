@@ -7,9 +7,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 DPI = 300
 
-# Physical card size: 60 x 90 mm
-CARD_WIDTH_MM = 60
-CARD_HEIGHT_MM = 90
+# Physical card size: 63 x 88 mm
+CARD_WIDTH_MM = 63
+CARD_HEIGHT_MM = 86
 
 # Convert mm -> pixels
 CARD_WIDTH_PX = round(CARD_WIDTH_MM / 25.4 * DPI)
@@ -25,11 +25,11 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Olivia_Rodrigo-cigarette_smoke.png"
+second_image_path = "../albums/Harry_Styles-From_the_Dining_Table.png"
 
 
 # ==================================================
-# CREATE 60 x 90 MM CANVAS
+# CREATE 63 x 88 MM CANVAS
 # ==================================================
 
 canvas = Image.new(
@@ -52,7 +52,7 @@ hitster_image = Image.open(
 
 # Maximum size for the top image
 max_width = CARD_WIDTH_PX - 20
-max_height = 340
+max_height = 320
 
 hitster_image.thumbnail(
     (max_width, max_height),
@@ -93,7 +93,7 @@ canvas.paste(
 # TOP SEPARATOR
 # --------------------------------------------------
 
-top_line_y = 350
+top_line_y = 330
 
 draw.line(
     (40, top_line_y, CARD_WIDTH_PX - 40, top_line_y),
@@ -110,8 +110,8 @@ second_image = Image.open(
 ).convert("RGBA")
 
 # Maximum size for second image
-second_max_width = CARD_WIDTH_PX - 60
-second_max_height = 540
+second_max_width = CARD_WIDTH_PX - 100
+second_max_height = 500
 
 second_image.thumbnail(
     (second_max_width, second_max_height),
@@ -134,7 +134,7 @@ canvas.paste(
 # BOTTOM SEPARATOR
 # --------------------------------------------------
 
-bottom_line_y = 920
+bottom_line_y = 880
 
 draw.line(
     (40, bottom_line_y, CARD_WIDTH_PX - 40, bottom_line_y),
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2026"
-song = f"Artist: Olivia Rodrigo\nSong: cigarette smoke\nRelease date: {release_date}"
+release_date = "2017"
+song = f"Artist: Harry Styles\nSong: From the Dining Table\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../background-pics/Olivia_Rodrigo-cigarette_smoke.png",
+    "../63x88/back/Harry_Styles-From_the_Dining_Table.png",
     dpi=(DPI, DPI)
 )
 

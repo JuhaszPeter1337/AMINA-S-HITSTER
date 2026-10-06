@@ -1,7 +1,7 @@
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
 
-url = "https://open.spotify.com/track/0e4u0sFRGxHL4U2iFBrUvZ?autoplay_ok=1"
+url = "https://open.spotify.com/track/1IF5UcqRO42D12vYwceOY6?autoplay_ok=1"
 
 # --------------------------------------------------
 # PRINT SETTINGS
@@ -9,8 +9,8 @@ url = "https://open.spotify.com/track/0e4u0sFRGxHL4U2iFBrUvZ?autoplay_ok=1"
 
 DPI = 300
 
-CARD_WIDTH_MM = 60
-CARD_HEIGHT_MM = 90
+CARD_WIDTH_MM = 63
+CARD_HEIGHT_MM = 86
 
 CARD_WIDTH_PX = round(CARD_WIDTH_MM / 25.4 * DPI)
 CARD_HEIGHT_PX = round(CARD_HEIGHT_MM / 25.4 * DPI)
@@ -52,7 +52,7 @@ qr_image = qr.make_image(
 # --------------------------------------------------
 
 # Leave some space around the QR code
-qr_size = 540
+qr_size = 500
 
 qr_image = qr_image.resize(
     (qr_size, qr_size),
@@ -92,7 +92,7 @@ hitster_image = Image.open(
 
 # Maximum size for the top image
 max_width = CARD_WIDTH_PX - 20
-max_height = 340
+max_height = 320
 
 hitster_image.thumbnail(
     (max_width, max_height),
@@ -134,7 +134,7 @@ canvas.paste(
 # TOP SEPARATOR
 # --------------------------------------------------
 
-top_line_y = 350
+top_line_y = 330
 
 draw.line(
     (40, top_line_y, CARD_WIDTH_PX - 40, top_line_y),
@@ -160,6 +160,7 @@ canvas.paste(
 # --------------------------------------------------
 
 bottom_line_y = qr_y + qr_image.height + 25
+
 
 draw.line(
     (40, bottom_line_y, CARD_WIDTH_PX - 40, bottom_line_y),
@@ -188,7 +189,7 @@ bbox = draw.textbbox(
 text_width = bbox[2] - bbox[0]
 
 x = (CARD_WIDTH_PX - text_width) // 2
-y = bottom_line_y + 20
+y = bottom_line_y + 30
 
 draw.text(
     (x, y),
@@ -221,7 +222,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../qr-codes/Olivia_Rodrigo-cigarette_smoke.png",
+    "../63x88/front/Harry_Styles-From_the_Dining_Table.png",
     dpi=(DPI, DPI)
 )
 
