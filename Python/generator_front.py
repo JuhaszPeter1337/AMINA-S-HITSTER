@@ -1,7 +1,7 @@
 import qrcode
 from PIL import Image, ImageDraw, ImageFont
 
-url = "https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b?autoplay_ok=1"
+url = "https://open.spotify.com/track/2bL2gyO6kBdLkNSkxXNh6x?autoplay_ok=1"
 
 # --------------------------------------------------
 # PRINT SETTINGS
@@ -222,7 +222,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2020/front/The_Weeknd-Blinding_Lights.png",
+    "../years/2014/front/Maroon_5-Animals.png",
     dpi=(DPI, DPI)
 )
 
