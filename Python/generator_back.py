@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Maroon_5-Animals.png"
+second_image_path = "../albums/The_Weeknd-The_Hills.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2014"
-song = f"Artist: Maroon 5\nSong: Animals\nRelease date: {release_date}"
+release_date = "2015"
+song = f"Artist: The Weeknd\nSong: The Hills\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2014/back/Maroon_5-Animals.png",
+    "../years/2015/back/The_Weeknd-The_Hills.png",
     dpi=(DPI, DPI)
 )
 
