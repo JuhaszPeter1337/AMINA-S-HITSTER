@@ -222,7 +222,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../63x88/front/One_Direction-Truly_Madly_Deeply.png",
+    "../cards/front/One_Direction-Truly_Madly_Deeply.png",
     dpi=(DPI, DPI)
 )
 
