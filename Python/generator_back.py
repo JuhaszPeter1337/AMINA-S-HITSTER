@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Harry_Styles-From_the_Dining_Table.png"
+second_image_path = "../albums/Louis_Tomlinson-Jump_The_Gun.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2017"
-song = f"Artist: Harry Styles\nSong: From the Dining Table\nRelease date: {release_date}"
+release_date = "2026"
+song = f"Artist: Louis Tomlinson\nSong: Jump The Gun\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../63x88/back/Harry_Styles-From_the_Dining_Table.png",
+    "../63x88/back/Louis_Tomlinson-Jump_The_Gun.png",
     dpi=(DPI, DPI)
 )
 
