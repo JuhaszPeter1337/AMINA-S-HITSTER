@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Katy_Perry-I_Kissed_a_Girl.png"
+second_image_path = "../albums/Sean_Kingston-Beautiful_Girls.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2008"
-song = f"Artist: Katy Perry\nSong: I Kissed A Girl\nRelease date: {release_date}"
+release_date = "2007"
+song = f"Artist: Sean Kingston\nSong: Beautiful Girls\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2008/back/Katy_Perry-I_Kissed_a_Girl.png",
+    "../years/2007/back/Sean_Kingston-Beautiful_Girls.png",
     dpi=(DPI, DPI)
 )
 
