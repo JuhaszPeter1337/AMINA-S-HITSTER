@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Adele-Rolling_in_the_Deep.png"
+second_image_path = "../albums/Taio_Cruz-Dynamite.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2011"
-song = f"Artist: Adele\nSong: Rolling in the Deep\nRelease date: {release_date}"
+release_date = "2010"
+song = f"Artist: Taio Cruz\nSong: Dynamite\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2011/back/Adele-Rolling_in_the_Deep.png",
+    "../years/2010/back/Taio_Cruz-Dynamite.png",
     dpi=(DPI, DPI)
 )
 
