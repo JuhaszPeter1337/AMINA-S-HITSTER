@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/The_Chainsmokers_Halsey-Closer.png"
+second_image_path = "../albums/Pharrell_Williams-Happy.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2016"
-song = f"Artist: The Chainsmokers, Halsey\nSong: Closer\nRelease date: {release_date}"
+release_date = "2014"
+song = f"Artist: Pharrell Williams\nSong: Happy\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2016/back/The_Chainsmokers_Halsey-Closer.png",
+    "../years/2014/back/Pharrell_Williams-Happy.png",
     dpi=(DPI, DPI)
 )
 
