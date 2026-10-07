@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Drake-Nonstop.png"
+second_image_path = "../albums/The_Chainsmokers_Halsey-Closer.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2018"
-song = f"Artist: Drake\nSong: Nonstop\nRelease date: {release_date}"
+release_date = "2016"
+song = f"Artist: The Chainsmokers, Halsey\nSong: Closer\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2018/back/Drake-Nonstop.png",
+    "../years/2016/back/The_Chainsmokers_Halsey-Closer.png",
     dpi=(DPI, DPI)
 )
 
