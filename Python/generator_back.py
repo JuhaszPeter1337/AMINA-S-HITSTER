@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Hozier-Take_Me_To_Church.png"
+second_image_path = "../albums/Miley_Cyrus-Flowers.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2014"
-song = f"Artist: Hozier\nSong: Take Me To Church\nRelease date: {release_date}"
+release_date = "2023"
+song = f"Artist: Miley Cyrus\nSong: Flowers\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2014/back/Hozier-Take_Me_To_Church.png",
+    "../years/2023/back/Miley_Cyrus-Flowers.png",
     dpi=(DPI, DPI)
 )
 
