@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Pharrell_Williams-Happy.png"
+second_image_path = "../albums/Bruno_Mars_ROSÉ-APT.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2014"
-song = f"Artist: Pharrell Williams\nSong: Happy\nRelease date: {release_date}"
+release_date = "2024"
+song = f"Artist: Bruno Mars, ROSÉ\nSong: APT.\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2014/back/Pharrell_Williams-Happy.png",
+    "../years/2024/back/Bruno_Mars_ROSÉ-APT.png",
     dpi=(DPI, DPI)
 )
 
