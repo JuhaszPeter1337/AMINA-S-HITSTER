@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Sean_Kingston-Beautiful_Girls.png"
+second_image_path = "../albums/Rednex-Cotton_Eye_Joe.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2007"
-song = f"Artist: Sean Kingston\nSong: Beautiful Girls\nRelease date: {release_date}"
+release_date = "1994"
+song = f"Artist: Rednex\nSong: Cotton Eye Joe\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2007/back/Sean_Kingston-Beautiful_Girls.png",
+    "../years/1994/back/Rednex-Cotton_Eye_Joe.png",
     dpi=(DPI, DPI)
 )
 
