@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Artemas-i_like_the_way_you_kiss_me.png"
+second_image_path = "../albums/Robin_Schulz-Prayer_in_C.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2024"
-song = f"Artist: Artemas\nSong: i like the way you kiss me\nRelease date: {release_date}"
+release_date = "2014"
+song = f"Artist: Robin Schulz\nSong: Prayer in C\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2024/back/Artemas-i_like_the_way_you_kiss_me.png",
+    "../years/2014/back/Robin_Schulz-Prayer_in_C.png",
     dpi=(DPI, DPI)
 )
 
