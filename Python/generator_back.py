@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Pet_Shop_Boys-It's_a_Sin.png"
+second_image_path = "../albums/Amy_Winehouse-Rehab.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "1987"
-song = f"Artist: Pet Shop Boys\nSong: It's a Sin\nRelease date: {release_date}"
+release_date = "2006"
+song = f"Artist: Amy Winehouse\nSong: Rehab\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/1987/back/Pet_Shop_Boys-It's_a_Sin.png",
+    "../years/2006/back/Amy_Winehouse-Rehab.png",
     dpi=(DPI, DPI)
 )
 
