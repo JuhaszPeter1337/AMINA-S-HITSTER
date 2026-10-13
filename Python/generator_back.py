@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Shawn_Mendes-Treat_You_Better.png"
+second_image_path = "../albums/Gene_Chandler-Duke_of_Earl.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2017"
-song = f"Artist: Shawn Mendes\nSong: Treat You Better\nRelease date: {release_date}"
+release_date = "1962"
+song = f"Artist: Gene Chandler\nSong: Duke of Earl\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2017/back/Shawn_Mendes-Treat_You_Better.png",
+    "../years/1962/back/Gene_Chandler-Duke_of_Earl.png",
     dpi=(DPI, DPI)
 )
 
