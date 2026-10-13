@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Arctic_Monkeys-505.png"
+second_image_path = "../albums/Shawn_Mendes-Treat_You_Better.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2007"
-song = f"Artist: Arctic Monkeys\nSong: 505\nRelease date: {release_date}"
+release_date = "2017"
+song = f"Artist: Shawn Mendes\nSong: Treat You Better\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2007/back/Arctic_Monkeys-505.png.png",
+    "../years/2017/back/Shawn_Mendes-Treat_You_Better.png",
     dpi=(DPI, DPI)
 )
 
