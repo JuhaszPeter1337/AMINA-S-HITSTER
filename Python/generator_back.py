@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Ray_Charles-Hit_the_Road_Jack.png"
+second_image_path = "../albums/Tame_Impala_JENNIE-Dracula.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "1960"
-song = f"Artist: Ray Charles\nSong: Hit the Road Jack\nRelease date: {release_date}"
+release_date = "2026"
+song = f"Artist: Tame Impala, JENNIE\nSong: Dracula\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/1960/back/Ray_Charles-Hit_the_Road_Jack.png",
+    "../years/2026/back/Tame_Impala_JENNIE-Dracula.png",
     dpi=(DPI, DPI)
 )
 
