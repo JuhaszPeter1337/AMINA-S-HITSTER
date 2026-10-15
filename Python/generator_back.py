@@ -25,7 +25,7 @@ pink = "#f50c6f"
 # --------------------------------------------------
 
 hitster_image_path = "../game-pic/game2.png"
-second_image_path = "../albums/Amy_Winehouse-Rehab.png"
+second_image_path = "../albums/will_i_am_Britney_Spears-Scream_&_Shout.png"
 
 
 # ==================================================
@@ -147,8 +147,8 @@ font = ImageFont.truetype(
     30
 )
 
-release_date = "2006"
-song = f"Artist: Amy Winehouse\nSong: Rehab\nRelease date: {release_date}"
+release_date = "2013"
+song = f"Artist: will.i.am, Britney Spears\nSong: Scream & Shout\nRelease date: {release_date}"
 
 bbox = draw.textbbox(
     (0, 0),
@@ -189,7 +189,7 @@ draw.rectangle(
 # --------------------------------------------------
 
 canvas.save(
-    "../years/2006/back/Amy_Winehouse-Rehab.png",
+    "../new_cards/back/will_i_am_Britney_Spears-Scream_&_Shout.png",
     dpi=(DPI, DPI)
 )
 
